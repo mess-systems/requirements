@@ -28,7 +28,7 @@ jobs:
       - uses: actions/setup-java@v4
         with: { distribution: temurin, java-version: "21" }
       - name: OpenFastTrace (advisory)
-        continue-on-error: true   # статус покрытия — рекомендательный, см. docs/process/status-policy.md
+        continue-on-error: true   # статус покрытия рекомендательный, см. docs/process/status-policy.md
         run: |
           curl -sSLo oft.jar https://github.com/itsallcode/openfasttrace/releases/download/4.11.0/openfasttrace-4.11.0.jar
           echo "f094cd314f0fc4236f513f66fb39260a16f72e2320beb6b4fdeb7940b9b8cf87  oft.jar" | sha256sum -c -

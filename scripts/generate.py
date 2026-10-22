@@ -9,7 +9,7 @@ rows.sort(key=lambda r: r["id"])
 js = json.dumps(rows, ensure_ascii=False, indent=2, default=str) + "\n"
 cnt = collections.Counter((r["scope"], r["type"]) for r in rows)
 st = collections.Counter(r["status"] for r in rows)
-md = ["# Реестр требований", "", "*Сгенерирован `scripts/generate.py` — не редактировать вручную.*", "",
+md = ["# Реестр требований", "", "*Сгенерирован `scripts/generate.py`, не редактировать вручную.*", "",
       f"Всего: **{len(rows)}**. По статусам: " + ", ".join(f"{k} {v}" for k, v in sorted(st.items())), "",
       "| Область | Тип | Кол-во |", "|---|---|---|"]
 md += [f"| {a} | {b} | {n} |" for (a, b), n in sorted(cnt.items())]
@@ -21,7 +21,7 @@ md = "\n".join(md) + "\n"
 out = {ROOT / "REGISTER.md": md, ROOT / "register.json": js}
 if "--check" in sys.argv:
     stale = [p.name for p, c in out.items() if not p.exists() or p.read_text(encoding="utf-8") != c]
-    if stale: print("Устарели:", stale, "— запустите scripts/generate.py"); sys.exit(1)
+    if stale: print("Устарели:", stale, "; запустите scripts/generate.py"); sys.exit(1)
     print("REGISTER.md и register.json актуальны"); sys.exit(0)
 for p, c in out.items(): p.write_text(c, encoding="utf-8")
 print(f"Сгенерировано: {len(rows)} записей")

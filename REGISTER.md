@@ -1,6 +1,6 @@
 # Реестр требований
 
-*Сгенерирован `scripts/generate.py` — не редактировать вручную.*
+*Сгенерирован `scripts/generate.py`, не редактировать вручную.*
 
 Всего: **14**. По статусам: approved 7, draft 1, implemented 2, proposed 3, verified 1
 
@@ -16,7 +16,7 @@
 
 | ID | Название | Тип | Статус | Приоритет | Владелец | Область | ADR |
 |---|---|---|---|---|---|---|---|
-| [X-BR-001](requirements/x-platform/X-BR-001.md) | Мультиарендность — данные клиентов изолированы | BR | approved | P1 | role-x-product-owners | x-platform |  |
+| [X-BR-001](requirements/x-platform/X-BR-001.md) | Мультиарендность с изоляцией данных клиентов | BR | approved | P1 | role-x-product-owners | x-platform |  |
 | [X-FR-001](requirements/x-records/X-FR-001.md) | Экспорт записей клиента в CSV | FR | draft | P3 | role-x-records-engineers | x-records |  |
 | [X-INT-001](requirements/x-records/X-INT-001.md) | Публикация событий записи через outbox | INT | approved | P2 | role-x-records-engineers | x-records |  |
 | [X-NFR-001](requirements/x-records/X-NFR-001.md) | Доступность публичного API не ниже 99,9 % в месяц | NFR | approved | P1 | role-sre | x-records | ADR-001 |

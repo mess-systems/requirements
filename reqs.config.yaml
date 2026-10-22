@@ -9,7 +9,7 @@ statuses: [draft, proposed, approved, implemented, verified, deprecated]
 priorities: [P1, P2, P3]
 acceptance_heading: "## Критерии приёмки"
 require_oft_marker: true
-# Режим строгой проверки: warn — печатать, но не падать; error — падать.
+# Режим строгой проверки: при warn нарушения печатаются, но проверка не падает; при error проверка падает.
 # Можно задать по правилу (см. docs/process/strictness-rollout.md).
 strictness:
   default: error
