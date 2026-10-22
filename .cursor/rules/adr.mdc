@@ -1,0 +1,8 @@
+---
+description: Оформление ADR
+globs: docs/adr/**
+alwaysApply: false
+---
+- Файл `docs/adr/ADR-NNN-<slug>.md` по `templates/adr.md`, следующий свободный номер.
+- Строка `Связанные требования:` обязательна; в связанных требованиях добавь ADR в `links.adr`.
+- Решение заменяется новым ADR со статусом `superseded by`, старый не переписывается.

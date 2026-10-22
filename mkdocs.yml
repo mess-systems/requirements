@@ -1,0 +1,10 @@
+site_name: "mess.systems x: требования"
+docs_dir: site-src
+theme:
+  name: material
+  language: ru
+  features: [navigation.sections, search.highlight, content.code.copy]
+plugins: [search]
+markdown_extensions: [tables, admonition, toc]
+# Навигация строится автоматически по каталогам site-src (requirements/, adr/, process/).
+# site-src собирает make site: копирует requirements/, docs/adr, docs/process, REGISTER.md и docs/site-index.md.

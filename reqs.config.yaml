@@ -1,0 +1,22 @@
+# Единственное место, где задаются префиксы, типы и области. Скрипты не знают ни одного ID заранее.
+project: x
+# соответствие каталога и префикса ID. Каталог второго уровня = значение поля scope.
+roots:
+  requirements: X
+types: [BR, FR, NFR, SEC, OPS, INT, CR]
+scopes: [x-platform, x-records]
+statuses: [draft, proposed, approved, implemented, verified, deprecated]
+priorities: [P1, P2, P3]
+acceptance_heading: "## Критерии приёмки"
+require_oft_marker: true
+# Режим строгой проверки: warn — печатать, но не падать; error — падать.
+# Можно задать по правилу (см. docs/process/strictness-rollout.md).
+strictness:
+  default: error
+  rules:
+    acceptance_section: error
+    oft_marker: error
+    verified_needs_evidence: warn
+    adr_exists: warn
+adr_dir: docs/adr
+adr_pattern: "^ADR-[0-9]{3}$"

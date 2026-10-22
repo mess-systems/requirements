@@ -1,0 +1,298 @@
+[
+  {
+    "id": "X-BR-001",
+    "title": "Мультиарендность — данные клиентов изолированы",
+    "type": "BR",
+    "status": "approved",
+    "priority": "P1",
+    "owner": "role-x-product-owners",
+    "scope": "x-platform",
+    "category": "tenancy",
+    "source": [
+      "Типовой пример blueprint (выдуманный продукт x компании mess.systems)"
+    ],
+    "links": {
+      "adr": [],
+      "depends_on": [],
+      "verified_by": []
+    },
+    "version": 1,
+    "path": "requirements/x-platform/X-BR-001.md"
+  },
+  {
+    "id": "X-FR-001",
+    "title": "Экспорт записей клиента в CSV",
+    "type": "FR",
+    "status": "draft",
+    "priority": "P3",
+    "owner": "role-x-records-engineers",
+    "scope": "x-records",
+    "category": "export",
+    "source": [
+      "Типовой пример blueprint (выдуманный продукт x компании mess.systems)"
+    ],
+    "links": {
+      "adr": [],
+      "depends_on": [],
+      "verified_by": []
+    },
+    "version": 1,
+    "path": "requirements/x-records/X-FR-001.md"
+  },
+  {
+    "id": "X-INT-001",
+    "title": "Публикация событий записи через outbox",
+    "type": "INT",
+    "status": "approved",
+    "priority": "P2",
+    "owner": "role-x-records-engineers",
+    "scope": "x-records",
+    "category": "integration",
+    "source": [
+      "Типовой пример blueprint (выдуманный продукт x компании mess.systems)"
+    ],
+    "links": {
+      "adr": [],
+      "depends_on": [],
+      "verified_by": []
+    },
+    "version": 1,
+    "path": "requirements/x-records/X-INT-001.md"
+  },
+  {
+    "id": "X-NFR-001",
+    "title": "Доступность публичного API не ниже 99,9 % в месяц",
+    "type": "NFR",
+    "status": "approved",
+    "priority": "P1",
+    "owner": "role-sre",
+    "scope": "x-records",
+    "category": "availability",
+    "source": [
+      "Типовой пример blueprint (выдуманный продукт x компании mess.systems)"
+    ],
+    "links": {
+      "adr": [
+        "ADR-001"
+      ],
+      "depends_on": [],
+      "verified_by": []
+    },
+    "version": 1,
+    "path": "requirements/x-records/X-NFR-001.md"
+  },
+  {
+    "id": "X-NFR-002",
+    "title": "Время ответа API p95 ≤ 300 мс при 200 RPS",
+    "type": "NFR",
+    "status": "approved",
+    "priority": "P2",
+    "owner": "role-x-records-engineers",
+    "scope": "x-records",
+    "category": "performance",
+    "source": [
+      "Типовой пример blueprint (выдуманный продукт x компании mess.systems)"
+    ],
+    "links": {
+      "adr": [],
+      "depends_on": [
+        "X-NFR-001"
+      ],
+      "verified_by": []
+    },
+    "version": 1,
+    "path": "requirements/x-records/X-NFR-002.md"
+  },
+  {
+    "id": "X-NFR-003",
+    "title": "Время хранится только в UTC с часовым поясом",
+    "type": "NFR",
+    "status": "verified",
+    "priority": "P3",
+    "owner": "role-x-records-engineers",
+    "scope": "x-records",
+    "category": "data-model",
+    "source": [
+      "Типовой пример blueprint (выдуманный продукт x компании mess.systems)"
+    ],
+    "links": {
+      "adr": [],
+      "depends_on": [],
+      "verified_by": [
+        "tests/test_timestamps.py::test_tz_columns"
+      ]
+    },
+    "version": 1,
+    "path": "requirements/x-records/X-NFR-003.md"
+  },
+  {
+    "id": "X-OPS-001",
+    "title": "Резервное копирование БД с RPO ≤ 15 минут",
+    "type": "OPS",
+    "status": "approved",
+    "priority": "P1",
+    "owner": "role-platform-engineers",
+    "scope": "x-platform",
+    "category": "backup",
+    "source": [
+      "Типовой пример blueprint (выдуманный продукт x компании mess.systems)"
+    ],
+    "links": {
+      "adr": [
+        "ADR-002"
+      ],
+      "depends_on": [],
+      "verified_by": []
+    },
+    "version": 1,
+    "path": "requirements/x-platform/X-OPS-001.md"
+  },
+  {
+    "id": "X-OPS-002",
+    "title": "Ежеквартальное учение по восстановлению с RTO ≤ 4 часа",
+    "type": "OPS",
+    "status": "proposed",
+    "priority": "P2",
+    "owner": "role-platform-engineers",
+    "scope": "x-platform",
+    "category": "dr",
+    "source": [
+      "Типовой пример blueprint (выдуманный продукт x компании mess.systems)"
+    ],
+    "links": {
+      "adr": [
+        "ADR-002"
+      ],
+      "depends_on": [
+        "X-OPS-001"
+      ],
+      "verified_by": []
+    },
+    "version": 1,
+    "path": "requirements/x-platform/X-OPS-002.md"
+  },
+  {
+    "id": "X-OPS-003",
+    "title": "Централизованное логирование со сроком хранения 30 дней",
+    "type": "OPS",
+    "status": "approved",
+    "priority": "P2",
+    "owner": "role-sre",
+    "scope": "x-platform",
+    "category": "logging",
+    "source": [
+      "Типовой пример blueprint (выдуманный продукт x компании mess.systems)"
+    ],
+    "links": {
+      "adr": [],
+      "depends_on": [],
+      "verified_by": []
+    },
+    "version": 1,
+    "path": "requirements/x-platform/X-OPS-003.md"
+  },
+  {
+    "id": "X-OPS-004",
+    "title": "Обязательный CI-гейт перед слиянием в main",
+    "type": "OPS",
+    "status": "implemented",
+    "priority": "P1",
+    "owner": "role-platform-engineers",
+    "scope": "x-platform",
+    "category": "ci",
+    "source": [
+      "Типовой пример blueprint (выдуманный продукт x компании mess.systems)"
+    ],
+    "links": {
+      "adr": [],
+      "depends_on": [],
+      "verified_by": []
+    },
+    "version": 1,
+    "path": "requirements/x-platform/X-OPS-004.md"
+  },
+  {
+    "id": "X-SEC-001",
+    "title": "Вход сотрудников только через SSO с MFA",
+    "type": "SEC",
+    "status": "implemented",
+    "priority": "P1",
+    "owner": "role-security-engineers",
+    "scope": "x-platform",
+    "category": "access",
+    "source": [
+      "Типовой пример blueprint (выдуманный продукт x компании mess.systems)"
+    ],
+    "links": {
+      "adr": [],
+      "depends_on": [],
+      "verified_by": []
+    },
+    "version": 1,
+    "path": "requirements/x-platform/X-SEC-001.md"
+  },
+  {
+    "id": "X-SEC-002",
+    "title": "Секреты хранятся только в менеджере секретов",
+    "type": "SEC",
+    "status": "approved",
+    "priority": "P1",
+    "owner": "role-security-engineers",
+    "scope": "x-platform",
+    "category": "secrets",
+    "source": [
+      "Типовой пример blueprint (выдуманный продукт x компании mess.systems)"
+    ],
+    "links": {
+      "adr": [
+        "ADR-001"
+      ],
+      "depends_on": [],
+      "verified_by": []
+    },
+    "version": 1,
+    "path": "requirements/x-platform/X-SEC-002.md"
+  },
+  {
+    "id": "X-SEC-003",
+    "title": "Персональные данные хранятся не дольше установленного срока",
+    "type": "SEC",
+    "status": "proposed",
+    "priority": "P1",
+    "owner": "role-data-protection",
+    "scope": "x-records",
+    "category": "pii",
+    "source": [
+      "Типовой пример blueprint (выдуманный продукт x компании mess.systems)"
+    ],
+    "links": {
+      "adr": [],
+      "depends_on": [],
+      "verified_by": []
+    },
+    "version": 1,
+    "path": "requirements/x-records/X-SEC-003.md"
+  },
+  {
+    "id": "X-SEC-004",
+    "title": "Сканирование образов и блокировка критических уязвимостей",
+    "type": "SEC",
+    "status": "proposed",
+    "priority": "P2",
+    "owner": "role-security-engineers",
+    "scope": "x-platform",
+    "category": "supply-chain",
+    "source": [
+      "Типовой пример blueprint (выдуманный продукт x компании mess.systems)"
+    ],
+    "links": {
+      "adr": [],
+      "depends_on": [
+        "X-OPS-004"
+      ],
+      "verified_by": []
+    },
+    "version": 1,
+    "path": "requirements/x-platform/X-SEC-004.md"
+  }
+]

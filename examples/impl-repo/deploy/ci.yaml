@@ -1,0 +1,6 @@
+# [impl->req~X-OPS-004~1]
+branch_protection:
+  required_checks: [build, test, requirements]
+  required_approvals: 1
+# [impl->req~X-SEC-004~1]
+image_scan: { fail_on: CRITICAL, sbom: true }
