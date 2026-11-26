@@ -3,7 +3,7 @@ id: X-OPS-001
 title: Резервное копирование БД с RPO ≤ 15 минут
 type: OPS
 status: approved
-priority: P1
+priority: M
 owner: role-platform-engineers
 scope: x-platform
 category: backup

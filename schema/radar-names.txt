@@ -1,0 +1,122 @@
+# Снимок карточек tech-radar (github.com/mess-systems/tech-radar, technologies/*.md, коммит 3e69e49): имя файла и заголовок карточки. Обновлять вместе с радаром.
+acme|ACME
+actions-runner-controller|Actions Runner Controller (ARC)
+activepieces|Activepieces
+agentdesktop|agentdesktop
+agentevals|agentevals
+agentgateway|agentgateway
+agentregistry|agentregistry
+airflow|Apache Airflow
+alertmanager|Alertmanager
+ansible|Ansible
+argo-cd|Argo CD
+attic|Attic
+authentik|Authentik
+buildkit|BuildKit
+cachyos|CachyOS
+chezmoi|chezmoi
+cilium|Cilium
+clickhouse|ClickHouse
+cloudnative-pg|CloudNativePG
+coder|Coder
+couchdb|Apache CouchDB
+cube|Cube
+cubesandbox|CubeSandbox
+datagrip|DataGrip
+datahub|DataHub
+dbeaver|DBeaver Community
+dbt|dbt
+deepeval|DeepEval
+deepseek-harness|DeepSeek Harness
+determinate-nix-installer|Determinate Nix Installer
+dev-containers|Dev Containers
+docker|Docker
+duckdb|DuckDB
+fedora-atomic|Fedora Atomic Desktops
+fleet|Fleet
+forgejo|Forgejo
+freeipa|FreeIPA
+glpi|GLPI
+grafana|Grafana
+harbor|Harbor
+jenkins|Jenkins
+k3s|kind and k3s
+kagent|kagent
+kasm-workspaces|Kasm Workspaces
+kata-containers|Kata Containers
+keenetic|Keenetic
+kestra|Kestra
+keycloak|Keycloak
+kubernetes-mcp-server|kubernetes-mcp-server
+kubernetes|Kubernetes
+langflow|Langflow
+langfuse|Langfuse
+langgraph|LangGraph
+laya|Laya
+librechat|LibreChat
+litellm|LiteLLM
+livekit|LiveKit
+llama-cpp|llama.cpp
+loki|Grafana Loki
+markitdown|MarkItDown
+matrix|Matrix
+mattermost|Mattermost
+mcp-grafana|mcp-grafana
+mcp|Model Context Protocol
+mem0|Mem0
+mikrotik|MikroTik
+mkdocs|MkDocs
+n8n|n8n
+netbird|NetBird
+netbox|NetBox
+nftables|nftables
+nix|Nix and NixOS
+nora|NORA
+oidc|OpenID Connect
+omarchy|Omarchy
+onyx|Onyx
+opa|Open Policy Agent
+openbao|OpenBao
+openfasttrace|OpenFastTrace
+opengrep|Opengrep
+openllmetry|OpenLLMetry
+openmetadata|OpenMetadata
+opentelemetry|OpenTelemetry
+opentofu|OpenTofu
+podman|Podman
+pomerium|Pomerium
+postgresql|PostgreSQL
+prometheus|Prometheus
+promptfoo|promptfoo
+proxmox-ve|Proxmox VE
+qdrant|Qdrant
+restic|Restic
+rustdesk|RustDesk
+rustfs|RustFS
+s3|S3 API
+sonarqube|SonarQube
+spiffe|SPIFFE
+spire|SPIRE
+strongdm|StrongDM
+superset|Apache Superset
+suricata|Suricata
+surrealdb|SurrealDB
+telegraf|Telegraf
+teleport|Teleport
+tempo|Grafana Tempo
+temporal|Temporal
+tinyfish|TinyFish
+toolbx-distrobox|Toolbx and Distrobox
+traefik|Traefik
+trivy|Trivy
+ubuntu-lts|Ubuntu LTS
+unleash|Unleash
+unsloth|Unsloth
+vaultwarden|Vaultwarden
+vllm|vLLM
+wazuh|Wazuh
+webauthn|WebAuthn
+winboat|WinBoat
+wireguard|WireGuard
+zabbix|Zabbix
+zitadel|Zitadel

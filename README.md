@@ -24,6 +24,10 @@ make trace IMPL=../my-service   # needs oft (OpenFastTrace 4.11) or Java 21 and 
 python3 -m pip install -r requirements-docs.txt && make site
 ```
 
+## Typical requirements catalogue
+
+The repository also holds a **catalogue of typical requirements** for classes of solutions, such as any AI gateway or any agentic delivery workspace. A typical requirement is written once in `catalog/<domain>/T-<DOM>-NNN.md` (domain codes come from the naming standard), names no products, keeps thresholds as parameters, and links to rows of blueprint check matrices. Profiles in `profiles/sets/` and `profiles/classes/` group them; a class profile is named after its blueprint folder. A project lists profiles in `adoption.yaml` and inherits, refines or waives each requirement; every MUST item must be covered and every waiver needs a reason, an owner and a review date. Project priorities use MoSCoW (M, S, C, W); MUST, SHOULD and MAY in the catalogue express the strength of a statement (RFC 2119, RFC 8174). The catalogue is written in Russian first; see [docs/catalog.md](docs/catalog.md) and [docs/adoption.md](docs/adoption.md).
+
 ## Principles
 1. **One file, one requirement.** File name is the ID, folder is the scope.
 2. **Configuration, not code.** Prefixes, types, scopes and statuses live in `reqs.config.yaml`.

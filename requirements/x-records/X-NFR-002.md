@@ -3,7 +3,7 @@ id: X-NFR-002
 title: Время ответа API p95 ≤ 300 мс при 200 RPS
 type: NFR
 status: approved
-priority: P2
+priority: S
 owner: role-x-records-engineers
 scope: x-records
 category: performance

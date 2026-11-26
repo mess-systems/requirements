@@ -26,7 +26,15 @@
 | ID требования | `<PREFIX>-<TYPE>-<NNN>`: префикс 1–10 заглавных (в примерах `X`, код продукта x в верхнем регистре), тип из словаря `reqs.config.yaml`, номер трёхзначный и не переиспользуется |
 | Область (`scope` в front matter) | `<product>-<domain>`, совпадает с каталогом: `x-records`, `x-platform` |
 | ADR | `ADR-NNN-<kebab-slug>.md`; при нескольких доменах `ADR-<DOM>-NNN` |
+| ID типового требования | `T-<DOM>-<NNN>`: `T` — каталог, `DOM` — код домена стандарта в верхнем регистре (`IAM`, `ADLC`, `INFRA`), номер внутри домена не переиспользуется (`catalog/ids.lock`) |
+| Каталог типового требования | `catalog/<domain>/`, где `<domain>` — код домена стандарта; поле `scope` = код домена |
+| Сквозной набор | kebab-case с суффиксом `-baseline`: `ent-baseline` |
+| Профиль класса решений | имя папки blueprint: `ai-enablement`, `adlc-agent-delivery` |
 
 Поле `scope` пакета означает область требований. В стандарте ключ `scope` корпоративного контура означает другое: самое высокое окружение, для которого сертифицирован объект. Не переносите поле `scope` требования в метки ресурсов.
+
+## Словарь каталога типовых требований
+
+Каталог берёт из стандарта коды доменов ([01, раздел 4.2](https://github.com/mess-systems/naming-standard/blob/main/01-naming-conventions.md#42-domains)) и коды возможностей ([01, раздел 4.3](https://github.com/mess-systems/naming-standard/blob/main/01-naming-conventions.md#43-capability-codes-unique-across-all-domains)). Снимок словаря версии v2.7 лежит в `reqs.config.yaml` (`naming_standard.capabilities`); с клоном стандарта рядом (`NAMING=../naming-standard`) валидатор сверяет снимок с текстом стандарта. Коды, предложенные к внесению, перечислены в `naming_standard.pending`: сейчас это `skills` и `delivery` в домене `adlc`. Требования с такими кодами проходят проверку с предупреждением, пока код не внесён в стандарт. Контуры `corp` и `product` в поле `applies_to` взяты из `catalog/contours.yaml` стандарта.
 
 Если в вашей организации свой стандарт, поменяйте `reqs.config.yaml` и шаблон ID в `schema/`: скрипты от префиксов не зависят.

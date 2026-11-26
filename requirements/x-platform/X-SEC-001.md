@@ -3,7 +3,7 @@ id: X-SEC-001
 title: Вход сотрудников только через SSO с MFA
 type: SEC
 status: implemented
-priority: P1
+priority: M
 owner: role-security-engineers
 scope: x-platform
 category: access
@@ -14,6 +14,9 @@ links:
   depends_on: []
   verified_by: []
 version: 1
+refines:
+- T-IAM-001
+- T-IAM-002
 ---
 # X-SEC-001: Вход сотрудников только через SSO с MFA
 
@@ -23,6 +26,10 @@ version: 1
 Все внутренние веб-интерфейсы и консоли доступны только после входа через корпоративный IdP (OIDC/SAML) с MFA.
 
 Needs: impl, itest
+
+Covers:
+- req~T-IAM-001~1
+- req~T-IAM-002~1
 
 ## Обоснование
 Типовое требование для старта; адаптируйте пороги под свой проект.

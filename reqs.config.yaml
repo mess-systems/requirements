@@ -1,16 +1,78 @@
-# Единственное место, где задаются префиксы, типы и области. Скрипты не знают ни одного ID заранее.
+# Единственное место, где задаются префиксы, типы, области, статусы и словари. Скрипты не знают ни одного ID заранее.
 project: x
-# соответствие каталога и префикса ID. Каталог второго уровня = значение поля scope.
+
+# Корни. Каталог второго уровня = значение поля scope.
+#   kind: project  требования проекта (здесь выдуманный продукт x)
+#   kind: typical  каталог типовых требований (см. docs/catalog.md)
 roots:
-  requirements: X
-types: [BR, FR, NFR, SEC, OPS, INT, CR]
-scopes: [x-platform, x-records]
-statuses: [draft, proposed, approved, implemented, verified, deprecated]
-priorities: [P1, P2, P3]
+  requirements:
+    kind: project
+    prefix: X
+    types: [BR, FR, NFR, SEC, OPS, INT, CR]
+    scopes: [x-platform, x-records]
+    statuses: [draft, proposed, approved, implemented, verified, deprecated]
+    # Приоритет проекта по MoSCoW: M Must, S Should, C Could, W Won't (пока не делаем).
+    priorities: [M, S, C, W]
+  catalog:
+    kind: typical
+    prefix: T
+    # Типы = коды доменов naming-standard в верхнем регистре, scope = тот же код в нижнем регистре.
+    types: [IAM, GOV, SEC, OBS, NET, INFRA, SDLC, ADLC, AI, DATA, COLLAB, COMM, BIZ, ITSM, API, EDGE, DEVICE]
+    scopes: [iam, gov, sec, obs, net, infra, sdlc, adlc, ai, data, collab, comm, biz, itsm, api, edge, device]
+    statuses: [draft, proposed, approved, deprecated]
+
+# Сила формулировки (RFC 2119, RFC 8174). Это не приоритет: приоритет проекта задаётся MoSCoW.
+levels: [MUST, SHOULD, MAY]
+# Контуры naming-standard (catalog/contours.yaml стандарта).
+contours: [corp, product]
+
+# Словарь naming-standard: домены и коды возможностей (01, разделы 4.2 и 4.3).
+# Если рядом лежит клон стандарта (NAMING=../naming-standard), validate.py читает коды оттуда
+# и сверяет с этим снимком. pending: коды, предложенные к внесению, но ещё не внесённые.
+naming_standard:
+  repo: https://github.com/mess-systems/naming-standard
+  version: v2.7
+  commit: 2d688b7
+  capabilities:
+    iam: [sso, directory, pki, spiffe, secrets, passwords, b2b]
+    gov: [cmdb, archrepo, adr, policy, catalog, demo, audit]
+    sec: [siem, vuln, ids, scan]
+    obs: [dashboards, metrics, logs, traces, alerts]
+    net: [dns, mesh, ingress, egress, firewall]
+    infra: [compute, storage, backup, k8s]
+    sdlc: [git, ci, oci, packages, gitops, flags, hub-cache]
+    adlc: [registry, sandbox, evals]
+    ai: [gateway, inference, stt, tts, ocr, llm-traces, kb, docs, guard, assistant]
+    data: [warehouse, orchestrate, transform, ingest, data-catalog, bi, docstore, convert, sql, cache, objects]
+    collab: [chat, wiki, intranet, video]
+    comm: [mail, notify]
+    biz: [crm, billing]
+    itsm: [service-desk, change]
+    api: [gateway-api, portal-api]
+    edge: [lb]
+    device: [endpoint, vdi]
+  pending:
+    adlc: [skills, delivery]
+
+# Матрицы проверок blueprints: ссылки вида <папка>#M<n>. BLUEPRINTS=../blueprints включает сверку.
+blueprints:
+  repo: https://github.com/mess-systems/blueprints
+  commit: 77f8abc
+
+# Нейтральность: в разделах «Требование» и «Критерии приёмки» каталога нет названий продуктов.
+# Список названий берётся из schema/radar-names.txt (снимок карточек tech-radar).
+# allow: названия открытых стандартов и интерфейсов, которые задают контракт.
+neutrality:
+  allow: [acme, kubernetes, mcp, oidc, opentelemetry, s3, spiffe, webauthn]
+
+# Подсказки по характеристикам требований ISO/IEC/IEEE 29148:2018, раздел 5.2.5.
+quality:
+  vague_words: [удобн, быстро, по возможности, при необходимости, и т. д., и т.д., оптимальн, достаточн, современн, интуитивн, гибк]
+
 acceptance_heading: "## Критерии приёмки"
 require_oft_marker: true
-# Режим строгой проверки: при warn нарушения печатаются, но проверка не падает; при error проверка падает.
-# Можно задать по правилу (см. docs/process/strictness-rollout.md).
+
+# Строгость: warn печатает нарушение, error валит проверку (docs/process/strictness-rollout.md).
 strictness:
   default: error
   rules:
@@ -18,5 +80,16 @@ strictness:
     oft_marker: error
     verified_needs_evidence: warn
     adr_exists: warn
+    blueprint_check: warn
+    neutrality: warn
+    quality_singular: warn
+    quality_vague: warn
+    params_declared: warn
+    waiver_expired: error
+    capability_pending: warn
+    naming_snapshot: warn
 adr_dir: docs/adr
 adr_pattern: "^ADR-[0-9]{3}$"
+
+# Выпуск каталога (тег catalog-vX.Y.Z после одобрения). Проект фиксирует его в adoption.yaml.
+catalog_release: 0.1.0

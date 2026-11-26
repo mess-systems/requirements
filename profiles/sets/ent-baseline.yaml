@@ -1,0 +1,25 @@
+id: ent-baseline
+kind: set
+title: Корпоративный контур любого внутреннего сервиса
+version: 0.1.0
+status: proposed
+owner: role-security-engineers
+description: >-
+  Вход через поставщика идентичностей, второй фактор, роли из групп, изоляция чтения, учётные записи,
+  секреты, журнал аудита и SIEM, сроки хранения, отказоустойчивое развёртывание, метрики и оповещения.
+  Первое наполнение: корпоративные пробелы из разбора Tencent LoopForge v0.4.3.
+items:
+  - {id: T-IAM-001, stage: 1}
+  - {id: T-IAM-002, stage: 1}
+  - {id: T-IAM-003, stage: 1}
+  - {id: T-IAM-004, stage: 1}
+  - {id: T-IAM-005, stage: 2}
+  - {id: T-IAM-006, stage: 2}
+  - {id: T-IAM-007, stage: 2}
+  - {id: T-IAM-008, stage: 1}
+  - {id: T-GOV-001, stage: 1}
+  - {id: T-SEC-001, stage: 2}
+  - {id: T-GOV-002, stage: 2}
+  - {id: T-INFRA-001, stage: 3}
+  - {id: T-OBS-001, stage: 2}
+  - {id: T-OBS-002, stage: 2}

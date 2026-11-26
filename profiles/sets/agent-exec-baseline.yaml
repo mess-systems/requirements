@@ -1,0 +1,13 @@
+id: agent-exec-baseline
+kind: set
+title: Любой сервис, который исполняет код агентов
+version: 0.1.0
+status: proposed
+owner: role-platform-engineers
+description: >-
+  Ограничение сетевого выхода сред исполнения, исполнение без доступа к управлению контейнерами хоста,
+  непроверенная конфигурация и хуки из репозитория в прогонах без человека.
+items:
+  - {id: T-ADLC-001, stage: 1}
+  - {id: T-ADLC-002, stage: 1}
+  - {id: T-ADLC-003, stage: 2}

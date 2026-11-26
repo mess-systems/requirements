@@ -1,0 +1,77 @@
+# Реестр источников каталога. Ключи используются в поле basis типовых требований.
+# Обратный индекс «где используется» генерирует scripts/generate.py в CATALOG.md, руками его не ведут.
+# type: standard (ISO, NIST), rfc, spec (открытая спецификация), upstream-docs (документация продукта по тегу релиза).
+sources:
+  iso-29148:
+    type: standard
+    title: "ISO/IEC/IEEE 29148:2018 Systems and software engineering — Life cycle processes — Requirements engineering"
+    url: https://www.iso.org/standard/72089.html
+    note: характеристики отдельного требования, раздел 5.2.5; третья редакция в стадии DIS
+  rfc2119:
+    type: rfc
+    title: "RFC 2119: Key words for use in RFCs to Indicate Requirement Levels"
+    url: https://www.rfc-editor.org/rfc/rfc2119
+  rfc8174:
+    type: rfc
+    title: "RFC 8174: Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"
+    url: https://www.rfc-editor.org/rfc/rfc8174
+  oidc-core:
+    type: spec
+    title: "OpenID Connect Core 1.0"
+    url: https://openid.net/specs/openid-connect-core-1_0.html
+  oidc-rp-logout:
+    type: spec
+    title: "OpenID Connect RP-Initiated Logout 1.0"
+    url: https://openid.net/specs/openid-connect-rpinitiated-1_0.html
+  oidc-backchannel-logout:
+    type: spec
+    title: "OpenID Connect Back-Channel Logout 1.0"
+    url: https://openid.net/specs/openid-connect-backchannel-1_0.html
+  rfc7636:
+    type: rfc
+    title: "RFC 7636: Proof Key for Code Exchange by OAuth Public Clients (PKCE)"
+    url: https://www.rfc-editor.org/rfc/rfc7636
+  nist-800-63b:
+    type: standard
+    title: "NIST SP 800-63B: Digital Identity Guidelines, Authentication and Authenticator Management"
+    url: https://pages.nist.gov/800-63-4/sp800-63b.html
+  rfc7643:
+    type: rfc
+    title: "RFC 7643: System for Cross-domain Identity Management (SCIM): Core Schema"
+    url: https://www.rfc-editor.org/rfc/rfc7643
+  rfc7644:
+    type: rfc
+    title: "RFC 7644: System for Cross-domain Identity Management (SCIM): Protocol"
+    url: https://www.rfc-editor.org/rfc/rfc7644
+  nist-800-92:
+    type: standard
+    title: "NIST SP 800-92: Guide to Computer Security Log Management"
+    url: https://csrc.nist.gov/pubs/sp/800/92/final
+  rfc5424:
+    type: rfc
+    title: "RFC 5424: The Syslog Protocol"
+    url: https://www.rfc-editor.org/rfc/rfc5424
+  openmetrics:
+    type: spec
+    title: "OpenMetrics specification"
+    url: https://prometheus.io/docs/specs/om/open_metrics_spec/
+  otlp:
+    type: spec
+    title: "OpenTelemetry Protocol (OTLP) specification"
+    url: https://opentelemetry.io/docs/specs/otlp/
+  otel-genai:
+    type: spec
+    title: "OpenTelemetry semantic conventions for generative AI"
+    url: https://opentelemetry.io/docs/specs/semconv/gen-ai/
+  owasp-llm-top10:
+    type: standard
+    title: "OWASP Top 10 for LLM Applications"
+    url: https://genai.owasp.org/llm-top-10/
+  k8s-disruptions:
+    type: upstream-docs
+    title: "Kubernetes: Disruptions and PodDisruptionBudget"
+    url: https://kubernetes.io/docs/concepts/workloads/pods/disruptions/
+  loopforge-0.4.3:
+    type: upstream-docs
+    title: "Tencent LoopForge v0.4.3, релиз"
+    url: https://github.com/Tencent/LoopForge/releases/tag/v0.4.3

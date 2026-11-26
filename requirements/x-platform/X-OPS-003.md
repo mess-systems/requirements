@@ -3,7 +3,7 @@ id: X-OPS-003
 title: Централизованное логирование со сроком хранения 30 дней
 type: OPS
 status: approved
-priority: P2
+priority: S
 owner: role-sre
 scope: x-platform
 category: logging

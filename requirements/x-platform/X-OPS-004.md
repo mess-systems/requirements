@@ -3,7 +3,7 @@ id: X-OPS-004
 title: Обязательный CI-гейт перед слиянием в main
 type: OPS
 status: implemented
-priority: P1
+priority: M
 owner: role-platform-engineers
 scope: x-platform
 category: ci

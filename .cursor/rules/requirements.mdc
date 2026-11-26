@@ -12,3 +12,6 @@ alwaysApply: true
 - Никогда не меняй `status` на approved/verified сам: это решение человека в PR.
 - После правок: `python scripts/validate.py && python scripts/generate.py`, закоммить REGISTER.md и register.json.
 - `owner` это роль или команда, не ФИО. Никаких секретов, ПДн и внутренних адресов в требованиях.
+- Типовые требования лежат в `catalog/<domain>/T-<DOM>-NNN.md`: домен и код возможности из naming-standard, формулировка без названий продуктов, пороги в `params`, продукты только в `realizations`. См. `docs/catalog.md`.
+- Приоритет требования проекта по MoSCoW (`M`, `S`, `C`, `W`); в каталоге вместо приоритета `level` (MUST, SHOULD, MAY).
+- Если проект закрывает типовое требование своим, добавь `refines: [T-…]` и строку `Covers:` с `req~T-…~N` и режим `refine` в `adoption.yaml`. `requirements/_catalog/` не редактируй: это вывод `scripts/generate.py`.

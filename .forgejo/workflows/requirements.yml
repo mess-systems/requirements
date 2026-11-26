@@ -10,12 +10,18 @@ jobs:
     runs-on: docker
     steps:
       - uses: https://code.forgejo.org/actions/checkout@v4
+      # Словарь naming-standard и матрицы проверок blueprints на зафиксированных коммитах (reqs.config.yaml)
+      - uses: https://code.forgejo.org/actions/checkout@v4
+        with: { repository: mess-systems/naming-standard, ref: 2d688b7985e5414043e1766c089a7ee534794038, path: .ext/naming-standard, github-server-url: "https://github.com" }
+      - uses: https://code.forgejo.org/actions/checkout@v4
+        with: { repository: mess-systems/blueprints, ref: 77f8abc558786651ce9fb601493216b310b9a583, path: .ext/blueprints, github-server-url: "https://github.com" }
       - uses: https://code.forgejo.org/actions/setup-python@v5
         with: { python-version: "3.12" }
       - run: pip install -r requirements-dev.txt
-      - name: Schema, config and links
+      - name: Schema, config, catalog, profiles, adoption, privacy
+        env: { NAMING: .ext/naming-standard, BLUEPRINTS: .ext/blueprints }
         run: python scripts/validate.py --report violations.md
-      - name: REGISTER.md / register.json up to date
+      - name: REGISTER.md, CATALOG.md, register.json, ids.lock, requirements/_catalog up to date
         run: python scripts/generate.py --check
       - if: always()
         uses: https://code.forgejo.org/actions/upload-artifact@v3

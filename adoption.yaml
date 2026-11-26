@@ -1,0 +1,22 @@
+# Какие типовые требования принимает выдуманный продукт x и как (docs/adoption.md).
+# inherit: как есть, с параметрами; refine: уточнено своими требованиями (by); waive: исключено с причиной, владельцем и сроком пересмотра.
+# Копии принятых требований генерирует scripts/generate.py в requirements/_catalog/.
+catalog:
+  repo: https://github.com/mess-systems/requirements
+  release: 0.1.0
+root: requirements
+profiles: [ent-baseline]
+items:
+  - {id: T-IAM-001, mode: refine, by: [X-SEC-001], priority: M}
+  - {id: T-IAM-002, mode: refine, by: [X-SEC-001], priority: M}
+  - {id: T-IAM-003, mode: inherit, priority: M}
+  - {id: T-IAM-004, mode: inherit, priority: M}
+  - {id: T-IAM-008, mode: refine, by: [X-SEC-002], priority: M}
+  - {id: T-GOV-001, mode: inherit, priority: M, params: {audit_retention_days: 730}}
+  - id: T-SEC-001
+    mode: waive
+    reason: журнал аудита на первом этапе уходит в центральное логирование платформы, подключение SIEM запланировано на второй этап
+    owner: role-security-engineers
+    review: 2027-06-30
+    compensated_by: [X-OPS-003]
+  - {id: T-OBS-001, mode: inherit, priority: S}

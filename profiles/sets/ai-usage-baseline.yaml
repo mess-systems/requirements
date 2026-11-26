@@ -1,0 +1,16 @@
+id: ai-usage-baseline
+kind: set
+title: Любой сервис, который вызывает языковые модели
+version: 0.1.0
+status: proposed
+owner: role-platform-engineers
+description: >-
+  Вызовы только через корпоративный AI-шлюз, атрибуция вызова человеку и прогону, трассировки по OTLP,
+  бюджеты с блокировкой, собственный прайс и фильтры защиты данных.
+items:
+  - {id: T-AI-001, stage: 1}
+  - {id: T-AI-002, stage: 1}
+  - {id: T-AI-003, stage: 2}
+  - {id: T-AI-004, stage: 1}
+  - {id: T-AI-005, stage: 2}
+  - {id: T-AI-006, stage: 1}

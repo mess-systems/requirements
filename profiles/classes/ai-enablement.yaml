@@ -1,0 +1,18 @@
+id: ai-enablement
+kind: class
+title: Обеспечение компании AI-инструментами
+version: 0.1.0
+status: draft
+owner: role-platform-engineers
+blueprint: ai-enablement
+blueprint_status: published
+description: >-
+  Профиль типовой архитектуры ai-enablement: шлюз моделей, зоны исполнения агентов, каталог навыков,
+  учёт и аудит. Пока состоит из сквозных наборов; требования из разделов blueprint добавляются следующими шагами.
+includes: [ent-baseline@0.1, ai-usage-baseline@0.1, agent-exec-baseline@0.1]
+items: []
+backlog:
+  - {source: "blueprint ai-enablement, раздел 12", note: "полосы подписок и шлюза: требования к списку разрешённых репозиториев (строка M23)"}
+  - {source: "blueprint ai-enablement, раздел 11", note: "юрисдикции: запрет межъюрисдикционных запросов (строки M21, M22)"}
+  - {source: "blueprint ai-enablement, раздел 14", note: "цепочка поставки навыков: подписанные выпуски (строка M13), после внесения кода adlc/skills"}
+  - {source: "blueprint ai-enablement, матрица проверок", note: "допуск модели после проверки вызова инструментов (строка M26)"}
