@@ -4,7 +4,7 @@
     "title": "Мультиарендность с изоляцией данных клиентов",
     "type": "BR",
     "status": "approved",
-    "priority": "P1",
+    "priority": "M",
     "owner": "role-x-product-owners",
     "scope": "x-platform",
     "category": "tenancy",
@@ -24,7 +24,7 @@
     "title": "Экспорт записей клиента в CSV",
     "type": "FR",
     "status": "draft",
-    "priority": "P3",
+    "priority": "C",
     "owner": "role-x-records-engineers",
     "scope": "x-records",
     "category": "export",
@@ -44,7 +44,7 @@
     "title": "Публикация событий записи через outbox",
     "type": "INT",
     "status": "approved",
-    "priority": "P2",
+    "priority": "S",
     "owner": "role-x-records-engineers",
     "scope": "x-records",
     "category": "integration",
@@ -64,7 +64,7 @@
     "title": "Доступность публичного API не ниже 99,9 % в месяц",
     "type": "NFR",
     "status": "approved",
-    "priority": "P1",
+    "priority": "M",
     "owner": "role-sre",
     "scope": "x-records",
     "category": "availability",
@@ -86,7 +86,7 @@
     "title": "Время ответа API p95 ≤ 300 мс при 200 RPS",
     "type": "NFR",
     "status": "approved",
-    "priority": "P2",
+    "priority": "S",
     "owner": "role-x-records-engineers",
     "scope": "x-records",
     "category": "performance",
@@ -108,7 +108,7 @@
     "title": "Время хранится только в UTC с часовым поясом",
     "type": "NFR",
     "status": "verified",
-    "priority": "P3",
+    "priority": "C",
     "owner": "role-x-records-engineers",
     "scope": "x-records",
     "category": "data-model",
@@ -130,7 +130,7 @@
     "title": "Резервное копирование БД с RPO ≤ 15 минут",
     "type": "OPS",
     "status": "approved",
-    "priority": "P1",
+    "priority": "M",
     "owner": "role-platform-engineers",
     "scope": "x-platform",
     "category": "backup",
@@ -152,7 +152,7 @@
     "title": "Ежеквартальное учение по восстановлению с RTO ≤ 4 часа",
     "type": "OPS",
     "status": "proposed",
-    "priority": "P2",
+    "priority": "S",
     "owner": "role-platform-engineers",
     "scope": "x-platform",
     "category": "dr",
@@ -176,7 +176,7 @@
     "title": "Централизованное логирование со сроком хранения 30 дней",
     "type": "OPS",
     "status": "approved",
-    "priority": "P2",
+    "priority": "S",
     "owner": "role-sre",
     "scope": "x-platform",
     "category": "logging",
@@ -196,7 +196,7 @@
     "title": "Обязательный CI-гейт перед слиянием в main",
     "type": "OPS",
     "status": "implemented",
-    "priority": "P1",
+    "priority": "M",
     "owner": "role-platform-engineers",
     "scope": "x-platform",
     "category": "ci",
@@ -216,7 +216,7 @@
     "title": "Вход сотрудников только через SSO с MFA",
     "type": "SEC",
     "status": "implemented",
-    "priority": "P1",
+    "priority": "M",
     "owner": "role-security-engineers",
     "scope": "x-platform",
     "category": "access",
@@ -229,6 +229,10 @@
       "verified_by": []
     },
     "version": 1,
+    "refines": [
+      "T-IAM-001",
+      "T-IAM-002"
+    ],
     "path": "requirements/x-platform/X-SEC-001.md"
   },
   {
@@ -236,7 +240,7 @@
     "title": "Секреты хранятся только в менеджере секретов",
     "type": "SEC",
     "status": "approved",
-    "priority": "P1",
+    "priority": "M",
     "owner": "role-security-engineers",
     "scope": "x-platform",
     "category": "secrets",
@@ -251,6 +255,9 @@
       "verified_by": []
     },
     "version": 1,
+    "refines": [
+      "T-IAM-008"
+    ],
     "path": "requirements/x-platform/X-SEC-002.md"
   },
   {
@@ -258,7 +265,7 @@
     "title": "Персональные данные хранятся не дольше установленного срока",
     "type": "SEC",
     "status": "proposed",
-    "priority": "P1",
+    "priority": "M",
     "owner": "role-data-protection",
     "scope": "x-records",
     "category": "pii",
@@ -278,7 +285,7 @@
     "title": "Сканирование образов и блокировка критических уязвимостей",
     "type": "SEC",
     "status": "proposed",
-    "priority": "P2",
+    "priority": "S",
     "owner": "role-security-engineers",
     "scope": "x-platform",
     "category": "supply-chain",
@@ -294,5 +301,926 @@
     },
     "version": 1,
     "path": "requirements/x-platform/X-SEC-004.md"
+  },
+  {
+    "id": "T-ADLC-001",
+    "title": "Ограничение сетевого выхода сред исполнения агентов",
+    "type": "ADLC",
+    "scope": "adlc",
+    "capability": "sandbox",
+    "status": "proposed",
+    "version": 1,
+    "owner": "role-platform-engineers",
+    "level": "MUST",
+    "applies_to": [
+      "corp",
+      "product"
+    ],
+    "source": [
+      "Разбор Tencent LoopForge v0.4.3: корпоративный пробел ENT-16"
+    ],
+    "basis": [
+      "owasp-llm-top10"
+    ],
+    "checks": [
+      "ai-enablement#M17",
+      "ai-enablement#M18"
+    ],
+    "realizations": [
+      "cubesandbox"
+    ],
+    "links": {
+      "adr": [],
+      "depends_on": [],
+      "verified_by": []
+    },
+    "path": "catalog/adlc/T-ADLC-001.md"
+  },
+  {
+    "id": "T-ADLC-002",
+    "title": "Исполнение агентов без доступа к управлению контейнерами хоста",
+    "type": "ADLC",
+    "scope": "adlc",
+    "capability": "sandbox",
+    "status": "proposed",
+    "version": 1,
+    "owner": "role-platform-engineers",
+    "level": "MUST",
+    "applies_to": [
+      "corp",
+      "product"
+    ],
+    "source": [
+      "Разбор Tencent LoopForge v0.4.3: корпоративный пробел ENT-17"
+    ],
+    "checks": [
+      "ai-enablement#M25"
+    ],
+    "realizations": [
+      "cubesandbox",
+      "kata-containers",
+      "podman"
+    ],
+    "links": {
+      "adr": [],
+      "depends_on": [],
+      "verified_by": []
+    },
+    "path": "catalog/adlc/T-ADLC-002.md"
+  },
+  {
+    "id": "T-ADLC-003",
+    "title": "Конфигурация и хуки из репозитория в прогонах без человека",
+    "type": "ADLC",
+    "scope": "adlc",
+    "capability": "sandbox",
+    "status": "proposed",
+    "version": 1,
+    "owner": "role-platform-engineers",
+    "level": "SHOULD",
+    "applies_to": [
+      "corp",
+      "product"
+    ],
+    "source": [
+      "Разбор Tencent LoopForge v0.4.3: корпоративный пробел ENT-26"
+    ],
+    "basis": [
+      "owasp-llm-top10"
+    ],
+    "links": {
+      "adr": [],
+      "depends_on": [],
+      "verified_by": []
+    },
+    "path": "catalog/adlc/T-ADLC-003.md"
+  },
+  {
+    "id": "T-AI-001",
+    "title": "Вызовы моделей только через корпоративный AI-шлюз",
+    "type": "AI",
+    "scope": "ai",
+    "capability": "gateway",
+    "status": "proposed",
+    "version": 1,
+    "owner": "role-platform-engineers",
+    "level": "MUST",
+    "applies_to": [
+      "corp",
+      "product"
+    ],
+    "source": [
+      "Разбор Tencent LoopForge v0.4.3: корпоративный пробел ENT-08"
+    ],
+    "checks": [
+      "ai-enablement#M4",
+      "ai-enablement#M5"
+    ],
+    "realizations": [
+      "agentgateway",
+      "litellm"
+    ],
+    "links": {
+      "adr": [],
+      "depends_on": [],
+      "verified_by": []
+    },
+    "path": "catalog/ai/T-AI-001.md"
+  },
+  {
+    "id": "T-AI-002",
+    "title": "Атрибуция вызова модели человеку и прогону",
+    "type": "AI",
+    "scope": "ai",
+    "capability": "gateway",
+    "status": "proposed",
+    "version": 1,
+    "owner": "role-platform-engineers",
+    "level": "MUST",
+    "applies_to": [
+      "corp",
+      "product"
+    ],
+    "source": [
+      "Разбор Tencent LoopForge v0.4.3: корпоративный пробел ENT-09"
+    ],
+    "basis": [
+      "otel-genai"
+    ],
+    "checks": [
+      "ai-enablement#M12"
+    ],
+    "realizations": [
+      "agentgateway",
+      "langfuse"
+    ],
+    "links": {
+      "adr": [],
+      "depends_on": [],
+      "verified_by": []
+    },
+    "path": "catalog/ai/T-AI-002.md"
+  },
+  {
+    "id": "T-AI-003",
+    "title": "Экспорт трассировок вызовов моделей по OTLP",
+    "type": "AI",
+    "scope": "ai",
+    "capability": "llm-traces",
+    "status": "proposed",
+    "version": 1,
+    "owner": "role-platform-engineers",
+    "level": "SHOULD",
+    "applies_to": [
+      "corp",
+      "product"
+    ],
+    "source": [
+      "Разбор Tencent LoopForge v0.4.3: корпоративный пробел ENT-10"
+    ],
+    "basis": [
+      "otlp",
+      "otel-genai"
+    ],
+    "realizations": [
+      "langfuse",
+      "openllmetry",
+      "opentelemetry"
+    ],
+    "links": {
+      "adr": [],
+      "depends_on": [],
+      "verified_by": []
+    },
+    "path": "catalog/ai/T-AI-003.md"
+  },
+  {
+    "id": "T-AI-004",
+    "title": "Бюджеты расходов на модели с блокировкой",
+    "type": "AI",
+    "scope": "ai",
+    "capability": "gateway",
+    "status": "proposed",
+    "version": 1,
+    "owner": "role-platform-engineers",
+    "level": "MUST",
+    "applies_to": [
+      "corp",
+      "product"
+    ],
+    "params": {
+      "budget_period": {
+        "type": "string",
+        "default": "month",
+        "description": "период бюджета: day, week или month"
+      },
+      "warn_percent": {
+        "type": "integer",
+        "default": 80,
+        "unit": "%",
+        "description": "порог предупреждения"
+      }
+    },
+    "source": [
+      "Разбор Tencent LoopForge v0.4.3: корпоративный пробел ENT-11"
+    ],
+    "checks": [
+      "ai-enablement#M6"
+    ],
+    "realizations": [
+      "agentgateway",
+      "litellm"
+    ],
+    "links": {
+      "adr": [],
+      "depends_on": [],
+      "verified_by": []
+    },
+    "path": "catalog/ai/T-AI-004.md"
+  },
+  {
+    "id": "T-AI-005",
+    "title": "Собственный прайс моделей и валюта расчётов",
+    "type": "AI",
+    "scope": "ai",
+    "capability": "gateway",
+    "status": "proposed",
+    "version": 1,
+    "owner": "role-platform-engineers",
+    "level": "SHOULD",
+    "applies_to": [
+      "corp",
+      "product"
+    ],
+    "params": {
+      "currency": {
+        "type": "string",
+        "default": "RUB",
+        "description": "валюта расчётов компании, код ISO 4217"
+      }
+    },
+    "source": [
+      "Разбор Tencent LoopForge v0.4.3: корпоративный пробел ENT-12"
+    ],
+    "realizations": [
+      "litellm",
+      "langfuse"
+    ],
+    "links": {
+      "adr": [],
+      "depends_on": [],
+      "verified_by": []
+    },
+    "path": "catalog/ai/T-AI-005.md"
+  },
+  {
+    "id": "T-AI-006",
+    "title": "Фильтры защиты данных для запросов и ответов моделей",
+    "type": "AI",
+    "scope": "ai",
+    "capability": "guard",
+    "status": "proposed",
+    "version": 1,
+    "owner": "role-security-engineers",
+    "level": "MUST",
+    "applies_to": [
+      "corp",
+      "product"
+    ],
+    "source": [
+      "Разбор Tencent LoopForge v0.4.3: корпоративный пробел ENT-13"
+    ],
+    "basis": [
+      "owasp-llm-top10"
+    ],
+    "checks": [
+      "ai-enablement#M7",
+      "ai-enablement#M8",
+      "ai-enablement#M9"
+    ],
+    "links": {
+      "adr": [],
+      "depends_on": [],
+      "verified_by": []
+    },
+    "path": "catalog/ai/T-AI-006.md"
+  },
+  {
+    "id": "T-GOV-001",
+    "title": "Журнал аудита действий пользователей и агентов",
+    "type": "GOV",
+    "scope": "gov",
+    "capability": "audit",
+    "status": "proposed",
+    "version": 1,
+    "owner": "role-security-engineers",
+    "level": "MUST",
+    "applies_to": [
+      "corp",
+      "product"
+    ],
+    "params": {
+      "audit_retention_days": {
+        "type": "integer",
+        "default": 365,
+        "unit": "дней",
+        "description": "срок хранения журнала аудита"
+      }
+    },
+    "source": [
+      "Разбор Tencent LoopForge v0.4.3: корпоративный пробел ENT-07"
+    ],
+    "basis": [
+      "nist-800-92"
+    ],
+    "links": {
+      "adr": [],
+      "depends_on": [],
+      "verified_by": []
+    },
+    "path": "catalog/gov/T-GOV-001.md"
+  },
+  {
+    "id": "T-GOV-002",
+    "title": "Сроки хранения всех видов данных",
+    "type": "GOV",
+    "scope": "gov",
+    "capability": "policy",
+    "status": "proposed",
+    "version": 1,
+    "owner": "role-data-protection",
+    "level": "SHOULD",
+    "applies_to": [
+      "corp",
+      "product"
+    ],
+    "params": {
+      "default_retention_days": {
+        "type": "integer",
+        "default": 180,
+        "unit": "дней",
+        "description": "срок хранения по умолчанию"
+      }
+    },
+    "source": [
+      "Разбор Tencent LoopForge v0.4.3: корпоративный пробел ENT-20"
+    ],
+    "links": {
+      "adr": [],
+      "depends_on": [],
+      "verified_by": []
+    },
+    "path": "catalog/gov/T-GOV-002.md"
+  },
+  {
+    "id": "T-IAM-001",
+    "title": "Вход пользователей через корпоративный IdP по OpenID Connect",
+    "type": "IAM",
+    "scope": "iam",
+    "capability": "sso",
+    "status": "proposed",
+    "version": 1,
+    "owner": "role-security-engineers",
+    "level": "MUST",
+    "applies_to": [
+      "corp",
+      "product"
+    ],
+    "params": {
+      "revoke_minutes": {
+        "type": "integer",
+        "default": 15,
+        "unit": "мин",
+        "description": "максимальное время до потери доступа после отключения у поставщика идентичностей"
+      }
+    },
+    "source": [
+      "Разбор Tencent LoopForge v0.4.3: корпоративный пробел ENT-01"
+    ],
+    "basis": [
+      "oidc-core",
+      "rfc7636",
+      "oidc-rp-logout",
+      "oidc-backchannel-logout"
+    ],
+    "realizations": [
+      "keycloak",
+      "zitadel"
+    ],
+    "links": {
+      "adr": [],
+      "depends_on": [],
+      "verified_by": []
+    },
+    "path": "catalog/iam/T-IAM-001.md"
+  },
+  {
+    "id": "T-IAM-002",
+    "title": "Второй фактор для каждого интерактивного входа",
+    "type": "IAM",
+    "scope": "iam",
+    "capability": "sso",
+    "status": "proposed",
+    "version": 1,
+    "owner": "role-security-engineers",
+    "level": "MUST",
+    "applies_to": [
+      "corp",
+      "product"
+    ],
+    "source": [
+      "Разбор Tencent LoopForge v0.4.3: корпоративный пробел ENT-04"
+    ],
+    "basis": [
+      "nist-800-63b"
+    ],
+    "checks": [
+      "ai-enablement#M3"
+    ],
+    "realizations": [
+      "keycloak",
+      "webauthn"
+    ],
+    "links": {
+      "adr": [],
+      "depends_on": [],
+      "verified_by": []
+    },
+    "path": "catalog/iam/T-IAM-002.md"
+  },
+  {
+    "id": "T-IAM-003",
+    "title": "Роли и членство из групп поставщика идентичностей",
+    "type": "IAM",
+    "scope": "iam",
+    "capability": "sso",
+    "status": "proposed",
+    "version": 1,
+    "owner": "role-security-engineers",
+    "level": "MUST",
+    "applies_to": [
+      "corp",
+      "product"
+    ],
+    "source": [
+      "Разбор Tencent LoopForge v0.4.3: корпоративный пробел ENT-02"
+    ],
+    "basis": [
+      "oidc-core"
+    ],
+    "realizations": [
+      "keycloak"
+    ],
+    "links": {
+      "adr": [],
+      "depends_on": [],
+      "verified_by": []
+    },
+    "path": "catalog/iam/T-IAM-003.md"
+  },
+  {
+    "id": "T-IAM-004",
+    "title": "Изоляция чтения между проектами",
+    "type": "IAM",
+    "scope": "iam",
+    "capability": "sso",
+    "status": "proposed",
+    "version": 1,
+    "owner": "role-security-engineers",
+    "level": "MUST",
+    "applies_to": [
+      "corp",
+      "product"
+    ],
+    "source": [
+      "Разбор Tencent LoopForge v0.4.3: корпоративный пробел ENT-05"
+    ],
+    "links": {
+      "adr": [],
+      "depends_on": [],
+      "verified_by": []
+    },
+    "path": "catalog/iam/T-IAM-004.md"
+  },
+  {
+    "id": "T-IAM-005",
+    "title": "Настраиваемые роли и права",
+    "type": "IAM",
+    "scope": "iam",
+    "capability": "sso",
+    "status": "proposed",
+    "version": 1,
+    "owner": "role-security-engineers",
+    "level": "SHOULD",
+    "applies_to": [
+      "corp",
+      "product"
+    ],
+    "source": [
+      "Разбор Tencent LoopForge v0.4.3: корпоративный пробел ENT-06"
+    ],
+    "links": {
+      "adr": [],
+      "depends_on": [],
+      "verified_by": []
+    },
+    "path": "catalog/iam/T-IAM-005.md"
+  },
+  {
+    "id": "T-IAM-006",
+    "title": "Автоматическое заведение и отключение учётных записей",
+    "type": "IAM",
+    "scope": "iam",
+    "capability": "directory",
+    "status": "proposed",
+    "version": 1,
+    "owner": "role-security-engineers",
+    "level": "SHOULD",
+    "applies_to": [
+      "corp",
+      "product"
+    ],
+    "params": {
+      "deprovision_minutes": {
+        "type": "integer",
+        "default": 60,
+        "unit": "мин",
+        "description": "максимальное время отключения после отключения в каталоге"
+      }
+    },
+    "source": [
+      "Разбор Tencent LoopForge v0.4.3: корпоративный пробел ENT-03"
+    ],
+    "basis": [
+      "rfc7643",
+      "rfc7644"
+    ],
+    "realizations": [
+      "keycloak",
+      "freeipa"
+    ],
+    "links": {
+      "adr": [],
+      "depends_on": [],
+      "verified_by": []
+    },
+    "path": "catalog/iam/T-IAM-006.md"
+  },
+  {
+    "id": "T-IAM-007",
+    "title": "Фоновые задачи от сервисной учётной записи",
+    "type": "IAM",
+    "scope": "iam",
+    "capability": "directory",
+    "status": "proposed",
+    "version": 1,
+    "owner": "role-security-engineers",
+    "level": "SHOULD",
+    "applies_to": [
+      "corp",
+      "product"
+    ],
+    "source": [
+      "Разбор Tencent LoopForge v0.4.3: корпоративный пробел ENT-23"
+    ],
+    "realizations": [
+      "keycloak"
+    ],
+    "links": {
+      "adr": [],
+      "depends_on": [],
+      "verified_by": []
+    },
+    "path": "catalog/iam/T-IAM-007.md"
+  },
+  {
+    "id": "T-IAM-008",
+    "title": "Секреты из внешнего хранилища секретов",
+    "type": "IAM",
+    "scope": "iam",
+    "capability": "secrets",
+    "status": "proposed",
+    "version": 1,
+    "owner": "role-security-engineers",
+    "level": "MUST",
+    "applies_to": [
+      "corp",
+      "product"
+    ],
+    "source": [
+      "Разбор Tencent LoopForge v0.4.3: корпоративный пробел ENT-14"
+    ],
+    "realizations": [
+      "openbao"
+    ],
+    "links": {
+      "adr": [],
+      "depends_on": [],
+      "verified_by": []
+    },
+    "path": "catalog/iam/T-IAM-008.md"
+  },
+  {
+    "id": "T-INFRA-001",
+    "title": "Отказоустойчивое развёртывание в Kubernetes",
+    "type": "INFRA",
+    "scope": "infra",
+    "capability": "k8s",
+    "status": "proposed",
+    "version": 1,
+    "owner": "role-platform-engineers",
+    "level": "SHOULD",
+    "applies_to": [
+      "corp",
+      "product"
+    ],
+    "params": {
+      "failover_seconds": {
+        "type": "integer",
+        "default": 60,
+        "unit": "с",
+        "description": "допустимый перерыв при отказе узла"
+      }
+    },
+    "source": [
+      "Разбор Tencent LoopForge v0.4.3: корпоративный пробел ENT-18"
+    ],
+    "basis": [
+      "k8s-disruptions"
+    ],
+    "realizations": [
+      "kubernetes",
+      "k3s"
+    ],
+    "links": {
+      "adr": [],
+      "depends_on": [],
+      "verified_by": []
+    },
+    "path": "catalog/infra/T-INFRA-001.md"
+  },
+  {
+    "id": "T-OBS-001",
+    "title": "Метрики работы в формате OpenMetrics",
+    "type": "OBS",
+    "scope": "obs",
+    "capability": "metrics",
+    "status": "proposed",
+    "version": 1,
+    "owner": "role-sre",
+    "level": "SHOULD",
+    "applies_to": [
+      "corp",
+      "product"
+    ],
+    "source": [
+      "Разбор Tencent LoopForge v0.4.3: корпоративный пробел ENT-19"
+    ],
+    "basis": [
+      "openmetrics"
+    ],
+    "realizations": [
+      "prometheus",
+      "opentelemetry"
+    ],
+    "links": {
+      "adr": [],
+      "depends_on": [],
+      "verified_by": []
+    },
+    "path": "catalog/obs/T-OBS-001.md"
+  },
+  {
+    "id": "T-OBS-002",
+    "title": "Правила оповещения для типовых отказов",
+    "type": "OBS",
+    "scope": "obs",
+    "capability": "alerts",
+    "status": "proposed",
+    "version": 1,
+    "owner": "role-sre",
+    "level": "SHOULD",
+    "applies_to": [
+      "corp",
+      "product"
+    ],
+    "params": {
+      "alert_minutes": {
+        "type": "integer",
+        "default": 5,
+        "unit": "мин",
+        "description": "время до оповещения о недоступности"
+      }
+    },
+    "source": [
+      "Разбор Tencent LoopForge v0.4.3: корпоративный пробел ENT-19"
+    ],
+    "basis": [
+      "openmetrics"
+    ],
+    "realizations": [
+      "alertmanager",
+      "grafana"
+    ],
+    "links": {
+      "adr": [],
+      "depends_on": [],
+      "verified_by": []
+    },
+    "path": "catalog/obs/T-OBS-002.md"
+  },
+  {
+    "id": "T-SEC-001",
+    "title": "Выгрузка журнала аудита в SIEM",
+    "type": "SEC",
+    "scope": "sec",
+    "capability": "siem",
+    "status": "proposed",
+    "version": 1,
+    "owner": "role-security-engineers",
+    "level": "MUST",
+    "applies_to": [
+      "corp",
+      "product"
+    ],
+    "params": {
+      "export_delay_minutes": {
+        "type": "integer",
+        "default": 5,
+        "unit": "мин",
+        "description": "максимальная задержка доставки записи в SIEM"
+      }
+    },
+    "source": [
+      "Разбор Tencent LoopForge v0.4.3: корпоративный пробел ENT-07"
+    ],
+    "basis": [
+      "rfc5424",
+      "nist-800-92"
+    ],
+    "realizations": [
+      "wazuh"
+    ],
+    "links": {
+      "adr": [],
+      "depends_on": [],
+      "verified_by": []
+    },
+    "path": "catalog/sec/T-SEC-001.md"
+  },
+  {
+    "id": "T-GOV-001",
+    "title": "Журнал аудита действий пользователей и агентов",
+    "type": "GOV",
+    "status": "proposed",
+    "owner": "role-security-engineers",
+    "scope": "gov",
+    "capability": "audit",
+    "level": "MUST",
+    "source": [
+      "catalog-v0.1.0: catalog/gov/T-GOV-001.md"
+    ],
+    "version": 1,
+    "adoption": {
+      "mode": "inherit",
+      "catalog_release": "0.1.0",
+      "priority": "M",
+      "params": {
+        "audit_retention_days": 730
+      }
+    },
+    "path": "requirements/_catalog/T-GOV-001.md"
+  },
+  {
+    "id": "T-IAM-001",
+    "title": "Вход пользователей через корпоративный IdP по OpenID Connect",
+    "type": "IAM",
+    "status": "proposed",
+    "owner": "role-security-engineers",
+    "scope": "iam",
+    "capability": "sso",
+    "level": "MUST",
+    "source": [
+      "catalog-v0.1.0: catalog/iam/T-IAM-001.md"
+    ],
+    "version": 1,
+    "adoption": {
+      "mode": "refine",
+      "catalog_release": "0.1.0",
+      "priority": "M",
+      "params": {
+        "revoke_minutes": 15
+      },
+      "by": [
+        "X-SEC-001"
+      ]
+    },
+    "path": "requirements/_catalog/T-IAM-001.md"
+  },
+  {
+    "id": "T-IAM-002",
+    "title": "Второй фактор для каждого интерактивного входа",
+    "type": "IAM",
+    "status": "proposed",
+    "owner": "role-security-engineers",
+    "scope": "iam",
+    "capability": "sso",
+    "level": "MUST",
+    "source": [
+      "catalog-v0.1.0: catalog/iam/T-IAM-002.md"
+    ],
+    "version": 1,
+    "adoption": {
+      "mode": "refine",
+      "catalog_release": "0.1.0",
+      "priority": "M",
+      "by": [
+        "X-SEC-001"
+      ]
+    },
+    "path": "requirements/_catalog/T-IAM-002.md"
+  },
+  {
+    "id": "T-IAM-003",
+    "title": "Роли и членство из групп поставщика идентичностей",
+    "type": "IAM",
+    "status": "proposed",
+    "owner": "role-security-engineers",
+    "scope": "iam",
+    "capability": "sso",
+    "level": "MUST",
+    "source": [
+      "catalog-v0.1.0: catalog/iam/T-IAM-003.md"
+    ],
+    "version": 1,
+    "adoption": {
+      "mode": "inherit",
+      "catalog_release": "0.1.0",
+      "priority": "M"
+    },
+    "path": "requirements/_catalog/T-IAM-003.md"
+  },
+  {
+    "id": "T-IAM-004",
+    "title": "Изоляция чтения между проектами",
+    "type": "IAM",
+    "status": "proposed",
+    "owner": "role-security-engineers",
+    "scope": "iam",
+    "capability": "sso",
+    "level": "MUST",
+    "source": [
+      "catalog-v0.1.0: catalog/iam/T-IAM-004.md"
+    ],
+    "version": 1,
+    "adoption": {
+      "mode": "inherit",
+      "catalog_release": "0.1.0",
+      "priority": "M"
+    },
+    "path": "requirements/_catalog/T-IAM-004.md"
+  },
+  {
+    "id": "T-IAM-008",
+    "title": "Секреты из внешнего хранилища секретов",
+    "type": "IAM",
+    "status": "proposed",
+    "owner": "role-security-engineers",
+    "scope": "iam",
+    "capability": "secrets",
+    "level": "MUST",
+    "source": [
+      "catalog-v0.1.0: catalog/iam/T-IAM-008.md"
+    ],
+    "version": 1,
+    "adoption": {
+      "mode": "refine",
+      "catalog_release": "0.1.0",
+      "priority": "M",
+      "by": [
+        "X-SEC-002"
+      ]
+    },
+    "path": "requirements/_catalog/T-IAM-008.md"
+  },
+  {
+    "id": "T-OBS-001",
+    "title": "Метрики работы в формате OpenMetrics",
+    "type": "OBS",
+    "status": "proposed",
+    "owner": "role-sre",
+    "scope": "obs",
+    "capability": "metrics",
+    "level": "SHOULD",
+    "source": [
+      "catalog-v0.1.0: catalog/obs/T-OBS-001.md"
+    ],
+    "version": 1,
+    "adoption": {
+      "mode": "inherit",
+      "catalog_release": "0.1.0",
+      "priority": "S"
+    },
+    "path": "requirements/_catalog/T-OBS-001.md"
   }
 ]

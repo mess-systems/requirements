@@ -3,7 +3,7 @@ id: X-SEC-002
 title: Секреты хранятся только в менеджере секретов
 type: SEC
 status: approved
-priority: P1
+priority: M
 owner: role-security-engineers
 scope: x-platform
 category: secrets
@@ -15,6 +15,8 @@ links:
   depends_on: []
   verified_by: []
 version: 1
+refines:
+- T-IAM-008
 ---
 # X-SEC-002: Секреты хранятся только в менеджере секретов
 
@@ -24,6 +26,9 @@ version: 1
 Пароли, токены и ключи хранятся в менеджере секретов и доставляются в рантайм; в git и образах секретов нет.
 
 Needs: impl, itest
+
+Covers:
+- req~T-IAM-008~1
 
 ## Обоснование
 Типовое требование для старта; адаптируйте пороги под свой проект.

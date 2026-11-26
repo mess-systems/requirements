@@ -1,0 +1,19 @@
+# Профиль: сквозной набор (profiles/sets/, kind: set) или профиль класса решений (profiles/classes/, kind: class).
+# Схема: schema/profile.schema.json. Имя профиля класса = имя папки blueprint.
+id: <name>
+kind: class
+title: <Класс решений>
+version: 0.1.0
+status: draft
+owner: role-<group>
+blueprint: <name>
+blueprint_status: published   # published, draft или none
+description: >-
+  <Что за класс решений и откуда первое наполнение.>
+includes: [ent-baseline@0.1]
+items:
+  - {id: T-<DOM>-<NNN>, level: SHOULD, stage: 1, params: {<name>: 30}}
+excluded:
+  - {id: T-<DOM>-<NNN>, reason: <почему не относится к классу>}
+backlog:
+  - {source: <откуда>, note: <что ещё оформить типовыми требованиями>}

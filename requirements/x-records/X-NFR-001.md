@@ -3,7 +3,7 @@ id: X-NFR-001
 title: Доступность публичного API не ниже 99,9 % в месяц
 type: NFR
 status: approved
-priority: P1
+priority: M
 owner: role-sre
 scope: x-records
 category: availability

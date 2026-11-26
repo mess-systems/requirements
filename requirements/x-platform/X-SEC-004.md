@@ -3,7 +3,7 @@ id: X-SEC-004
 title: Сканирование образов и блокировка критических уязвимостей
 type: SEC
 status: proposed
-priority: P2
+priority: S
 owner: role-security-engineers
 scope: x-platform
 category: supply-chain

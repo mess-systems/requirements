@@ -3,7 +3,7 @@ id: <PREFIX>-<TYPE>-<NNN>
 title: <Кратко, что должно быть верно>
 type: FR
 status: draft
-priority: P3
+priority: C
 owner: role-x-records-engineers
 scope: x-records
 category: export

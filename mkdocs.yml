@@ -7,4 +7,4 @@ theme:
 plugins: [search]
 markdown_extensions: [tables, admonition, toc]
 # Навигация строится автоматически по каталогам site-src (requirements/, adr/, process/).
-# site-src собирает make site: копирует requirements/, docs/adr, docs/process, REGISTER.md и docs/site-index.md.
+# site-src собирает make site: копирует requirements/, catalog/, profiles/, assessments/, docs/adr, docs/process, REGISTER.md, CATALOG.md и docs/site-index.md.

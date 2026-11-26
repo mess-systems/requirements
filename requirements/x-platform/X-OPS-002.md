@@ -3,7 +3,7 @@ id: X-OPS-002
 title: Ежеквартальное учение по восстановлению с RTO ≤ 4 часа
 type: OPS
 status: proposed
-priority: P2
+priority: S
 owner: role-platform-engineers
 scope: x-platform
 category: dr

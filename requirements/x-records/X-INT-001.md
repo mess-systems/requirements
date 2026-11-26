@@ -3,7 +3,7 @@ id: X-INT-001
 title: Публикация событий записи через outbox
 type: INT
 status: approved
-priority: P2
+priority: S
 owner: role-x-records-engineers
 scope: x-records
 category: integration

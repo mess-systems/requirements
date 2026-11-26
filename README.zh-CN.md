@@ -15,6 +15,10 @@ make trace IMPL=../my-service   # 需要 oft（OpenFastTrace 4.11）或 Java 21 
 python3 -m pip install -r requirements-docs.txt && make site
 ```
 
+## 典型需求目录
+
+本仓库还维护按解决方案类别划分的**典型需求目录**，例如任意 AI 网关或智能体交付工作空间。典型需求只写一次，位于 `catalog/<domain>/T-<DOM>-NNN.md`（域代码取自命名标准），不提及具体产品，阈值写成参数，并引用 blueprint 检查矩阵中的行。`profiles/sets/` 和 `profiles/classes/` 中的配置文件对其分组，类别配置文件与 blueprint 目录同名。项目在 `adoption.yaml` 中列出配置文件，对每条需求选择继承、细化或豁免；所有 MUST 条目都必须覆盖，每项豁免都需要理由、负责人和复审日期。项目优先级采用 MoSCoW（M、S、C、W），目录中的 MUST、SHOULD、MAY 表示表述强度（RFC 2119、RFC 8174）。目录先以俄语编写，详见 [docs/catalog.md](docs/catalog.md) 和 [docs/adoption.md](docs/adoption.md)。
+
 ## 原则
 1. 一个文件对应一条需求，文件名即 ID，目录即范围。
 2. 前缀、类型、范围和状态写在 `reqs.config.yaml` 中，而不是代码里。

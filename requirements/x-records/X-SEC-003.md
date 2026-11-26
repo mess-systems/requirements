@@ -3,7 +3,7 @@ id: X-SEC-003
 title: Персональные данные хранятся не дольше установленного срока
 type: SEC
 status: proposed
-priority: P1
+priority: M
 owner: role-data-protection
 scope: x-records
 category: pii

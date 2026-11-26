@@ -1,22 +1,46 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Requirement front matter",
-  "description": "Перечисления id/type/scope/status/priority дополнительно сверяются с reqs.config.yaml в validate.py, чтобы схема не зависела от префиксов проекта.",
+  "description": "Front matter требования проекта и типового требования каталога. Перечисления id/type/scope/status/priority/level/capability сверяются с reqs.config.yaml в validate.py, чтобы схема не зависела от префиксов. Обязательность полей каталога (capability, level, applies_to, version) проверяет validate.py по kind корня.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["id", "title", "type", "status", "priority", "owner", "scope", "source"],
+  "required": ["id", "title", "type", "status", "owner", "scope", "source"],
   "properties": {
-    "id": {"type": "string", "pattern": "^[A-Z][A-Z0-9]{0,9}-[A-Z]{2,4}-[0-9]{3}$"},
+    "id": {"type": "string", "pattern": "^[A-Z][A-Z0-9]{0,9}-[A-Z]{2,6}-[0-9]{3}$"},
     "title": {"type": "string", "minLength": 5, "maxLength": 120},
     "type": {"type": "string"},
     "status": {"type": "string"},
-    "priority": {"type": "string"},
-    "owner": {"type": "string", "description": "роль или команда, не ФИО"},
+    "priority": {"type": "string", "description": "только требования проекта: MoSCoW"},
+    "owner": {"type": "string", "pattern": "^role-[a-z0-9-]+$", "description": "группа role-..., не ФИО"},
     "scope": {"type": "string"},
     "category": {"type": "string"},
     "source": {"type": "array", "minItems": 1, "items": {"type": "string"}},
     "hypothesis": {"type": "boolean"},
     "version": {"type": "integer", "minimum": 1},
+    "capability": {"type": "string", "description": "код возможности naming-standard"},
+    "level": {"type": "string", "description": "сила формулировки: MUST, SHOULD, MAY"},
+    "applies_to": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "params": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object", "additionalProperties": false, "required": ["type", "default"],
+        "properties": {
+          "type": {"enum": ["integer", "number", "string", "list"]},
+          "default": {},
+          "unit": {"type": "string"},
+          "description": {"type": "string"}
+        }
+      }
+    },
+    "basis": {"type": "array", "items": {"type": "string"}, "description": "ключи sources.yaml"},
+    "checks": {"type": "array", "items": {"type": "string", "pattern": "^[a-z0-9-]+#[A-Z]+[0-9]+$"}, "description": "строки матриц проверок blueprints"},
+    "realizations": {"type": "array", "items": {"type": "string"}, "description": "карточки tech-radar, справочно"},
+    "tags": {"type": "array", "items": {"type": "string"}},
+    "refines": {"type": "array", "items": {"type": "string", "pattern": "^T-[A-Z]{2,6}-[0-9]{3}$"}, "description": "типовые требования, которые уточняет требование проекта"},
+    "adoption": {
+      "type": "object", "description": "только в сгенерированных копиях requirements/_catalog",
+      "properties": {"mode": {"enum": ["inherit", "refine"]}, "catalog_release": {"type": "string"}, "priority": {"type": "string"}, "by": {"type": "array", "items": {"type": "string"}}, "params": {"type": "object"}}
+    },
     "links": {
       "type": "object", "additionalProperties": false,
       "properties": {

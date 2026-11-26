@@ -3,3 +3,4 @@ site/
 site-src/
 violations.md
 trace.html
+.ext/

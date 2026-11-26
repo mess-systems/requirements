@@ -3,7 +3,7 @@ id: X-NFR-003
 title: Время хранится только в UTC с часовым поясом
 type: NFR
 status: verified
-priority: P3
+priority: C
 owner: role-x-records-engineers
 scope: x-records
 category: data-model
