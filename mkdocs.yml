@@ -5,6 +5,11 @@ theme:
   language: ru
   features: [navigation.sections, search.highlight, content.code.copy]
 plugins: [search]
+# README каталогов ссылаются на файлы вне сайта (docs/, schema/, templates/); на сайте их заменяют CATALOG.md и страницы требований.
+exclude_docs: |
+  catalog/README.md
+  profiles/README.md
+  assessments/README.md
 markdown_extensions: [tables, admonition, toc]
 # Навигация строится автоматически по каталогам site-src (requirements/, adr/, process/).
 # site-src собирает make site: копирует requirements/, catalog/, profiles/, assessments/, docs/adr, docs/process, REGISTER.md, CATALOG.md и docs/site-index.md.
